@@ -1,0 +1,126 @@
+# =========================================================================
+# OS & System Files
+# =========================================================================
+.DS_Store
+**/.DS_Store
+
+# =========================================================================
+# Editor & IDE Settings
+# =========================================================================
+.vscode/
+!.vscode/extensions.json
+.vscode-test
+.idea/
+
+# =========================================================================
+# Environment Variables & Secrets
+# =========================================================================
+.env
+.env.*
+!.env.example
+.env.production
+.env.sentry-build-plugin
+
+# =========================================================================
+# Dependencies & Package Managers
+# =========================================================================
+node_modules/
+jspm_packages/
+bower_components/
+web_modules/
+.npm
+.pnpm-store
+.node_repl_history
+
+# Lockfiles (Uncomment if lockfiles should not be tracked)
+# package-lock.json
+# yarn.lock
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# Yarn v2+ / Berry
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn-integrity
+
+# =========================================================================
+# Build Outputs & Framework Artifacts
+# =========================================================================
+dist/
+build/
+out/
+/api/
+/server/build
+/public/build
+.output
+.next
+.nuxt
+.astro/
+.svelte-kit/
+**/.vitepress/dist
+.vuepress/dist
+.serverless/
+.vercel
+.nitro
+
+# =========================================================================
+# Caches & Temporary Files
+# =========================================================================
+.cache/
+.parcel-cache
+.eslintcache
+.stylelintcache
+.docusaurus
+.fusebox/
+.firebase/
+.dynamodb/
+.tanstack
+.temp
+**/.vitepress/cache
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+*.tsbuildinfo
+
+# =========================================================================
+# Logs, Runtime & Diagnostics
+# =========================================================================
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+pids
+*.pid
+*.seed
+*.pid.lock
+.lock-wscript
+.tern-port
+*.tgz
+
+# =========================================================================
+# Testing & Code Coverage
+# =========================================================================
+coverage/
+*.lcov
+lib-cov
+.nyc_output
+.grunt
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# =========================================================================
+# Dev Containers
+# =========================================================================
+.devcontainer/devcontainer-lock.json
+.devcontainer/scripts/setup.sh

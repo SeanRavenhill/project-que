@@ -1,0 +1,38 @@
+# Commit Summary (required, max 50 characters):
+# Format: <type>[optional scope][!]: <description>
+# Example: feat(parser): add JSON array support
+
+# Detailed Description (optional, wrap at 72 characters):
+# Explain _what_ and _why_. Include context or background for reviewers.
+# Leave one blank line between summary and body.
+
+# Breaking Changes (optional):
+# If using "!" in the summary, describe the breaking change here,
+# or add a footer later:
+# BREAKING CHANGE: detailed description of the breaking change.
+
+# Footers (optional):
+# - References: "Closes #123", "Resolves #456"
+# - Reviewed-by, Co-authored-by, etc.
+# Format: <token>: <value> (e.g., Reviewed-by: Jane Doe)
+
+# Checklist (optional, remove before committing):
+# - [ ] Tests added/updated
+# - [ ] Documentation updated
+# - [ ] Code reviewed
+
+################################################################################ 
+
+# Types (choose one):
+
+# - feat: new feature (MINOR bump)
+# - fix: bug fix (PATCH bump)
+# - docs: documentation only
+# - style: formatting, linting, no code change
+# - refactor: code change without feature/fix
+# - perf: performance improvement
+# - test: adding/updating tests
+# - build: build system or dependencies
+# - ci: continuous integration
+# - chore: maintenance
+# - revert: revert previous commits

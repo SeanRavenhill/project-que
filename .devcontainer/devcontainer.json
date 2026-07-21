@@ -1,0 +1,66 @@
+{
+  "name": "Node Typescript Glovebox",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+
+  "forwardPorts": [3000, 5173],
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {
+        // --- Environment Consistency ---
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.fontFamily": "MesloLGS NF",
+        "js/ts.updateImportsOnFileMove.enabled": "always",
+        "npm.packageManager": "auto",
+
+        // --- Code Standards (Essential for Teams) ---
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false,
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "editor.rulers": [80, 120]
+      }
+    }
+  },
+
+  "features": {
+    "ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
+      "plugins": "zsh-autosuggestions zsh-syntax-highlighting",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions.git https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    }
+  },
+
+  "mounts": [
+    // 1. ISOLATION: Root node_modules (for concurrently)
+    "source=${localWorkspaceFolderBasename}-root-modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+
+    // 2. ISOLATION: Client node_modules
+    "source=${localWorkspaceFolderBasename}-client-modules,target=${containerWorkspaceFolder}/app/client/node_modules,type=volume",
+
+    // 3. ISOLATION: Server node_modules
+    "source=${localWorkspaceFolderBasename}-server-modules,target=${containerWorkspaceFolder}/app/server/node_modules,type=volume",
+
+    // 2. PORTABILITY: Using files inside your project folder instead of your Mac Home
+    "source=${localWorkspaceFolder}/.devcontainer/dotfiles/.zshrc,target=/home/node/.zshrc,type=bind,readonly",
+    "source=${localWorkspaceFolder}/.devcontainer/dotfiles/.p10k.zsh,target=/home/node/.p10k.zsh,type=bind,readonly",
+
+    // 3. ASSETS: Relative path to your commit template
+    "source=${localWorkspaceFolder}/.devcontainer/assets/commit-template.txt,target=/home/node/commit-template.txt,type=bind,readonly"
+  ],
+
+  "containerEnv": {
+    "GIT_CONFIG_PARAMETERS": "'commit.template=/home/node/commit-template.txt'"
+  },
+
+  // Ensure the folders exist and the 'node' user owns them so npm doesn't throw permission errors
+  "onCreateCommand": "sudo mkdir -p node_modules app/client/node_modules app/server/node_modules && sudo chown node node_modules app/client/node_modules app/server/node_modules",
+
+  "postCreateCommand": "chmod +x .devcontainer/scripts/*.sh && [ -f .devcontainer/scripts/setup.sh ] && bash .devcontainer/scripts/setup.sh || echo '⚠️ setup.sh not found. Please copy setup.example.sh to setup.sh and add your details.'",
+
+  "remoteUser": "node"
+}
