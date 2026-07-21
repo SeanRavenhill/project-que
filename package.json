@@ -1,0 +1,26 @@
+{
+  "name": "project_que",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "market trading information dashboard",
+  "author": "Sean Ravenhill",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.9.0",
+      "onFail": "download"
+    }
+  },
+  "scripts": {
+    "dev:client": "npm --prefix app/client run dev",
+    "dev:server": "npm --prefix app/server run dev",
+    "dev": "concurrently -n \"CLIENT,SERVER\" -c \"cyan,magenta\" \"npm run dev:client\" \"npm run dev:server\"",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  }
+}
