@@ -3,7 +3,9 @@ import express from 'express';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/health', (_req, res) => {
+app.use(express.json());
+
+app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
